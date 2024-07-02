@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const mongoose = require("mongoose");
-const dbURL = process.env.DATABASE_URL
-mongoose.connect(dbURL)
+const dbURL = process.env.DATABASE_URL;
+mongoose.connect(dbURL);
 
 const todoSchema = mongoose.Schema({
     title: String,
