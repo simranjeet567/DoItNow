@@ -1,0 +1,23 @@
+{
+  "name": "doitnow-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "SimranjeetSingh",
+  "license": "ISC",
+  "description": "This project is a To Do Application, a tool to tracker your daily goals.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simranjeet567/DoItNow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/simranjeet567/DoItNow/issues"
+  },
+  "homepage": "https://github.com/simranjeet567/DoItNow#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
