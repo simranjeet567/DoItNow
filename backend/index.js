@@ -31,6 +31,7 @@ app.post("/todo", async function(req, res){
     })
 })
 
+app.listen(3000);
 
 //4. creates a get endpoint for getting all the to-do's.
 app.get("/todo", async function(req, res){
