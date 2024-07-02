@@ -1,6 +1,7 @@
 //1. initializes an empty express app
 const express = require("express");
 const { createTodo, updateTodo } = require("./types"); //imported this here from types.js file, because it is exported in types.js file.
+const { todo } = require("./db");
 const app = express();
 
 
@@ -9,7 +10,7 @@ app.use(express.json());
 
 
 //3. creates a post endpoint for creating a to-do.
-app.post("/todo", function(req, res){
+app.post("/todo", async function(req, res){
     const createPayload = req.body;
     const parsePalyload =  createTodo.safeParse(createPayload);
 
@@ -20,18 +21,29 @@ app.post("/todo", function(req, res){
         return;
     }
     //else, put the data in the mongodb
-
+    await todo.create({
+        title: createPayload.title,
+        description: createPayload.description,
+        completed: false
+    })
+    res.json({
+        msg: "ToDo Created."
+    })
 })
 
 
 //4. creates a get endpoint for getting all the to-do's.
-app.get("/todo", function(req, res){
+app.get("/todo", async function(req, res){
+    const todos = await todo.find();// here () mean, give me everything. 
 
+    res.json({
+        todos
+    })
 })
 
 
 //5. creates a put endpoint for marking a specific to-do as completed.
-app.put("/completed", function(req, res){
+app.put("/completed", async function(req, res){
     const updatePayload = req.body;
     const parsePalyload = updateTodo.safeParse(updatePayload);
     if(!parsePalyload.success) {
@@ -40,4 +52,12 @@ app.put("/completed", function(req, res){
         })
         return;
     }
+    await todo.update({
+        _id: req.body.id
+    }, {
+        completed: true
+    })
+    res.json({
+        msg: "ToDo Marked as Completed."
+    })
 })
