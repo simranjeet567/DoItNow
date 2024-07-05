@@ -1,10 +1,14 @@
 //this code is used to render the todo's:
 
 
-export function Todos() {
+export function Todos({todos}) {
     return <div>
-        <h1>Go to Gym</h1>
-        <h2>hi Gym</h2>
-        <button>Mark as Completed</button>
-    </div>
+        {todos.map(function(todo) {
+            return <div>
+                <h1>{todo.title}</h1>
+                <h2>{todo.description}</h2>
+                <button>{todo.completed == true ? "Completed" : "Mark as Complete"}</button>
+            </div>
+        })}
+        </div>
 }
