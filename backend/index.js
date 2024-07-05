@@ -33,7 +33,7 @@ app.post("/todo", async function(req, res){
 
 
 //4. creates a get endpoint for getting all the to-do's.
-app.get("/todo", async function(req, res){
+app.get("/todos", async function(req, res){
     const todos = await todo.find();// here () mean, give me everything. 
 
     res.json({
@@ -46,7 +46,7 @@ app.get("/todo", async function(req, res){
 app.put("/completed", async function(req, res){
     const updatePayload = req.body;
     const parsePalyload = updateTodo.safeParse(updatePayload);
-    if(!parsePalyload.success) {
+    if(!parsePayload.success) {
         res.status(411).json({
             msg: "You have sent the wrong inputs",
         })
