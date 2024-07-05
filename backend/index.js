@@ -2,11 +2,13 @@
 const express = require("express");
 const { createTodo, updateTodo } = require("./types"); //imported this here from types.js file, because it is exported in types.js file.
 const { todo } = require("./db");
+const cors = require("cors");
 const app = express();
 
 
 //2. make sure all the endpoints would work and parse the body, it it's a json body.
 app.use(express.json());
+app.use(cors());
 
 
 //3. creates a post endpoint for creating a to-do.
