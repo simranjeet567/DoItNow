@@ -8,7 +8,10 @@ import { Todos } from './components/Todos'
 function App() {
   const [todos, setTodos] = useState([]);
 
-  fetch("http://localhost:3000.todos").then(async function(res) {
+  //this will keep on re-rendering again and again.
+  //so, this is a wrong way of doing a fetch.
+  fetch("http://localhost:3000.todos")
+  .then(async function(res) {
     const json = await res.json();
     setTodos(json.todos);
   })
@@ -19,6 +22,6 @@ function App() {
         <Todos todos={todos}></Todos>
       </div>
   )
-}
+} 
 
 export default App
